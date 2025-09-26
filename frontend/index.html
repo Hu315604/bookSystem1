@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Professional Book Management</title>
+    <link rel="stylesheet" href="/static/styles.css?v=5">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> Library Management System</h1>
+            <p>Professional Digital Library Management</p>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="books">
+                <i class="fas fa-book"></i> Book Management
+            </button>
+            <button class="tab-btn" data-tab="users">
+                <i class="fas fa-users"></i> User Management
+            </button>
+            <button class="tab-btn" data-tab="borrow">
+                <i class="fas fa-exchange-alt"></i> Borrow Management
+            </button>
+            <button class="tab-btn" data-tab="stats">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+        </nav>
+
+        <main>
+            <!-- Book Management Tab -->
+            <div id="books-tab" class="tab-content active">
+                <section class="management-section">
+                    <div class="section-header">
+                        <h2>Book Management</h2>
+                        <button class="btn-primary" onclick="showAddBookForm()">
+                            <i class="fas fa-plus"></i> Add Book
+                        </button>
+                    </div>
+                    
+                    <div class="search-controls">
+                        <div class="search-box">
+                            <input type="text" id="bookSearch" placeholder="Search books by title, author or publisher...">
+                            <button onclick="searchBooks()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <select id="categoryFilter" onchange="filterByCategory()">
+                            <option value="">All Categories</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="science">Science</option>
+                            <option value="technology">Technology</option>
+                            <option value="history">History</option>
+                            <option value="education">Education</option>
+                        </select>
+                    </div>
+                    
+                    <div id="booksList" class="items-grid">
+                        <!-- Book list will be dynamically loaded via JavaScript -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- User Management Tab -->
+            <div id="users-tab" class="tab-content">
+                <section class="management-section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                        <button class="btn-primary" onclick="showAddUserForm()">
+                            <i class="fas fa-user-plus"></i> Add User
+                        </button>
+                    </div>
+                    
+                    <div id="usersList" class="items-grid">
+                        <!-- User list will be dynamically loaded via JavaScript -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Borrow Management Tab -->
+            <div id="borrow-tab" class="tab-content">
+                <section class="management-section">
+                    <div class="section-header">
+                        <h2>Borrow Management</h2>
+                        <button class="btn-primary" onclick="showBorrowForm()">
+                            <i class="fas fa-book-reader"></i> New Borrow
+                        </button>
+                    </div>
+                    
+                    <div class="borrow-controls">
+                        <button class="filter-btn active" data-status="all">All</button>
+                        <button class="filter-btn" data-status="borrowed">Borrowed</button>
+                        <button class="filter-btn" data-status="returned">Returned</button>
+                        <button class="filter-btn" data-status="overdue">Overdue</button>
+                    </div>
+                    
+                    <div id="borrowList" class="items-list">
+                        <!-- Borrow records will be dynamically loaded via JavaScript -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Statistics Tab -->
+            <div id="stats-tab" class="tab-content">
+                <section class="stats-section">
+                    <h2>System Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-book"></i>
+                            <div class="stat-info">
+                                <h3 id="totalBooks">0</h3>
+                                <p>Total Books</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-book-open"></i>
+                            <div class="stat-info">
+                                <h3 id="availableBooks">0</h3>
+                                <p>Available</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-info">
+                                <h3 id="totalUsers">0</h3>
+                                <p>Registered Users</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-exchange-alt"></i>
+                            <div class="stat-info">
+                                <h3 id="borrowedBooks">0</h3>
+                                <p>Borrowed</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="modalBody">
+                    <!-- Modal content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Library Management System - ISYS3001 Configuration Management Demo Project</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Library Management System",
+    "version": "1.0.0",
+    "environment": "production",
+    "port": "${PORT:8080}",
+    "host": "0.0.0.0"
+  },
+  "database": {
+    "type": "json-file",
+    "books_path": "data/books.json",
+    "users_path": "data/users.json",
+    "borrow_records_path": "data/borrow_records.json"
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "file": "logs/library-prod.log"
+  },
+  "security": {
+    "cors": {
+      "enabled": true,
+      "origin": ["https://yourlibrary.com"]
+    },
+    "rateLimit": {
+      "enabled": true,
+      "windowMs": 900000,
+      "max": 200
+    }
+  },
+  "business": {
+    "defaultBorrowDays": 30,
+    "maxRenewalTimes": 2,
+    "finePerDay": 1.0,
+    "maxFine": 50.0
+  },
+  "features": {
+    "apiDocumentation": false,
+    "healthCheck": true,
+    "statistics": true,
+    "emailNotification": true
+  }
+}
